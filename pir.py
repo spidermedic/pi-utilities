@@ -5,7 +5,6 @@ from time import sleep
 import subprocess
 import RPi.GPIO as GPIO
 
-
 # Initialize Variables
 PIR = 22          # Data pin that the PIR sensor is connected to
 timeout = 30      # How long to wait after no movement is detected to turn off the screen
