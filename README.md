@@ -4,7 +4,7 @@ PIR is a simple python program that can be run via crontab. It will turn on the 
 
 The easiest way to run pir is via `crontab -e` and adding the line
 
-`@daily sudo rsync -e "ssh -p 22021" pi@192.168.1.21:/etc/pihole/white* :/etc/pihole/black* :/etc/pihole/reg* /etc/pihole`
+`@reboot python3 /home/pi/pir.py`
 
 I use this for my Magic Mirror and it works great!
 
