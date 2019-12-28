@@ -7,3 +7,6 @@ PiHole-Stats will quert your PiHole for the latest information and send the data
 
 # System-Info
 Like PiHole-Stats, System-Info collects information about your RPi and broadcasts it via MQTT. Requires paho.mqtt.client.
+
+# DHT11
+Contains small programs that use the DHT11 temp/humitidy sensor and moisture sensors.
