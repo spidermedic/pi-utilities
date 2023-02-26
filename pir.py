@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 
 # Initialize Variables
 pir_gpio = 22     # Data pin that the pir_gpio sensor is connected to
-stay_awake = 30   # How long to wait after no movement is detected to turn off the screen
+stay_awake = 30   # How many seconds to wait after no movement is detected to turn off the screen
 display_on = True # Defaults the screen to "on"
 
 # Initialize GPIO
