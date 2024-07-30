@@ -1,31 +1,30 @@
-#!/usr/bin/python
 
-# Import Modules
+# Imported Modules
 from time import sleep
 import subprocess
 import RPi.GPIO as GPIO
 
-# Initialize Variables
-pir_gpio = 22     # Data pin that the pir_gpio sensor is connected to
-stay_awake = 30   # How many seconds to wait after no movement is detected to turn off the screen
-display_on = True # Defaults the screen to "on"
 
-# Initialize GPIO
+# initialize GPIO
 GPIO.setwarnings(False)
 GPIO.setmode(GPIO.BCM)
 GPIO.cleanup()
-GPIO.setup(pir_gpio, GPIO.IN)
+GPIO.setup(22, GPIO.IN)
 
-# Main Function
+PIR_GPIO = 22
+display_on = True
+
 while True:
 
-    if display_on and not GPIO.input(pir_gpio):
-        subprocess.run("vcgencmd display_power 0 > /dev/null 2>&1", shell=True)
+    if display_on and not GPIO.input(PIR_GPIO):
+        subprocess.run("xrandr --display :0 --output HDMI-1 --off > /dev/null 2>&1", shell=True)
+        # subprocess.run("vcgencmd display_power 0 > /dev/null 2>&1", shell=True)
         display_on = False
 
-    if not display_on and GPIO.input(pir_gpio):
-        subprocess.run("vcgencmd display_power 1 > /dev/null 2>&1", shell=True)
+    if not display_on and GPIO.input(PIR_GPIO):
+        subprocess.run("xrandr --display :0 --output HDMI-1 --auto > /dev/null 2>&1", shell=True)
+        # subprocess.run("vcgencmd display_power 0 > /dev/null 2>&1", shell=True)
         display_on = True
-        sleep(stay_awake)
+        sleep(60)
 
     sleep(0.5)
