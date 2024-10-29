@@ -22,7 +22,7 @@ while True:
         display_on = False
 
     if not display_on and GPIO.input(PIR_GPIO):
-        subprocess.run("xrandr --display :0 --output HDMI-1 --auto > /dev/null 2>&1", shell=True)
+        subprocess.run("xrandr --display :0 --output HDMI-1 --mode 1920x1080 --rate 60 > /dev/null 2>&1", shell=True)
         # subprocess.run("vcgencmd display_power 0 > /dev/null 2>&1", shell=True)
         display_on = True
         sleep(60)
